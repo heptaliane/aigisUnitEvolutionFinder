@@ -1,0 +1,9 @@
+{
+  "header": {
+    "level": ["CC", "第一覚醒", "第二覚醒"]
+  },
+  "search": {
+    "placeholder": "クラス名...",
+    "emptyLabel": "見つかりませんでした"
+  }
+}
