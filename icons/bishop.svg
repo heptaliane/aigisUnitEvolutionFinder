@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="bishop.svg"
+   viewBox="0 0 43.40966 42.397312"
+   height="42.397312"
+   width="43.40966"
+   id="svg1425"
+   version="1.1">
+  <metadata
+     id="metadata1431">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1429" />
+  <sodipodi:namedview
+     inkscape:current-layer="g1433"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="15.076483"
+     inkscape:cx="23.368074"
+     inkscape:zoom="14.276267"
+     showgrid="false"
+     id="namedview1427"
+     inkscape:window-height="1043"
+     inkscape:window-width="1914"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     transform="translate(-386.86558,-25.895116)"
+     id="g1433"
+     inkscape:label="Image"
+     inkscape:groupmode="layer">
+    <path
+       sodipodi:nodetypes="ccccccsccccccccccccccc"
+       id="path1437"
+       d="m 395.96694,63.279224 c 0.38037,0.236664 0.19293,0.780624 2.538,-0.04599 l 10.57363,-15.568099 c 0.4616,-0.526665 2.34957,-1.249495 3.273,-0.845987 l 2.24337,-2.666948 c -3.59021,-2.737987 -4.24554,-6.913197 -3.24953,-9.231082 3.11648,-2.038572 4.31508,-2.712851 6.44052,-2.287967 2.67824,0.53539 2.45934,0.244339 4.06773,3.338155 0.24601,1.190971 -0.1368,1.894125 -2.86165,2.772786 -1.55527,0.05218 -2.13069,-1.80665 -2.74084,-3.257122 -1.08746,-0.905766 -1.96189,-0.09574 -2.32035,0.421735 -0.56627,1.357747 -0.40804,2.613413 -0.30924,3.551827 0.50442,3.282449 1.89682,4.724525 3.29648,6.327917 3.05784,1.100852 6.88824,0.639844 9.03392,0.106158 2.05664,-2.595305 4.31582,-5.316342 4.32326,-9.232064 -1.27596,-3.11905 -3.26334,-6.389449 -7.18995,-9.018224 -10.59344,-3.115987 -12.86079,-1.307042 -14.65807,-0.368069 -2.42663,2.282397 -1.48077,4.017083 -1.86537,6.662195 0.47885,1.566295 2.57168,5.515566 -0.57223,10.22821 l -10.03193,16.559303 c -0.43335,0.925795 -0.54628,1.796742 0.009,2.553266 z"
+       style="fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="csccccccccc"
+       id="path1439"
+       d="m 415.76837,46.011024 c -6.26796,0.713749 -7.53653,5.94539 -7.21785,10.499107 0.0547,0.782114 -2.05676,-0.668762 -1.49894,-5.028434 -0.57262,2.12832 -1.54144,4.54756 -1.58624,6.288303 0.14808,4.94547 2.35452,9.763999 3.83011,9.859431 4.39871,1.280233 6.2439,0.39152 7.63838,-0.05871 7.08049,-1.900645 4.99201,-9.197249 4.20941,-12.352556 -1.36789,-1.739469 -2.23603,-2.641057 -0.95807,-5.843641 -1.43776,-0.07399 -3.63381,1.278341 -4.51426,3.073143 -1.50599,-1.181392 -1.30981,-3.19307 0.0975,-6.436645 z"
+       style="opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       id="path1441"
+       d="m 396.8448,50.304221 8.41289,-8.266039 c 0.39412,-1.516347 1.94195,-1.371496 1.26282,-4.842637 0.22165,-1.119966 -1.3402,-3.95861 -4.2288,-4.326762 -3.23666,0.160724 -4.32098,0.859324 -5.39523,2.292279 -1.13643,-0.996197 -1.95283,-2.4361 -3.89472,-2.315543 -3.23603,-0.327486 -5.18679,0.986609 -5.9513,3.815817 -0.37651,1.745602 -0.25555,3.119339 1.09666,5.021933 z"
+       style="fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

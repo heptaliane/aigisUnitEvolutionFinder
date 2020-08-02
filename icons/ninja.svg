@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="ninja.png.svg"
+   viewBox="0 0 36.13155 35.251175"
+   height="35.251175"
+   width="36.13155"
+   id="svg1501"
+   version="1.1">
+  <metadata
+     id="metadata1507">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1505" />
+  <sodipodi:namedview
+     inkscape:current-layer="g1509"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="18.166666"
+     inkscape:cx="18.631549"
+     inkscape:zoom="29.85484"
+     showgrid="false"
+     id="namedview1503"
+     inkscape:window-height="1407"
+     inkscape:window-width="2554"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     transform="translate(-1.3684511,-2.5)"
+     id="g1509"
+     inkscape:label="Image"
+     inkscape:groupmode="layer">
+    <path
+       d="M 26.103394,37.751174 C 30.537716,31.609622 36.412446,26.01005 27,19 27.095694,12.107425 30.381959,9.8002512 37.5,13 30.918885,3.0888658 23.559718,7.0705265 16,13.166279 10.360981,12.338257 12.311458,6.6618153 13,2.5 -0.16259733,9.1518028 6.1733326,17.494416 12,23 11.781584,27.484984 8.2060866,28.841798 1.3684511,28.322989 10.342735,36.976238 14.933272,33.056471 20,28 c 7.821908,-0.546677 6.43235,4.910139 6.103394,9.751174 z M 22.521018,20.933041 a 3.6814008,3.6813996 0 0 1 -3.681401,3.681399 3.6814008,3.6813996 0 0 1 -3.681401,-3.681399 3.6814008,3.6813996 0 0 1 3.681401,-3.6814 3.6814008,3.6813996 0 0 1 3.681401,3.6814 z"
+       style="opacity:1;fill:#000000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path1519" />
+  </g>
+</svg>
