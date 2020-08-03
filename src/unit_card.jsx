@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarIcon from 'bootstrap-icons/icons/star-fill.svg';
 
-
 import rarityData from '../data/rarity.json';
+import CCIcon from '../icons/prod/cc.svg';
 
 
 const containerStyle = {
   borderRadius: '10px',
   padding: '10px',
+  position: 'relative',
   display: 'block',
   textAlign: 'center',
 };
@@ -26,8 +27,21 @@ const starStyle = {
   marginLeft: '10px',
 };
 const iconContainerStyle = {
-  textAlign: 'center',
-  padding: '20%',
+  height: '60%',
+  display: 'flex',
+  justifyContent: 'center',
+};
+const iconStyle = {
+  marginTop: 'auto',
+  marginBottom: 'auto',
+};
+const ccContainerStyle = {
+  paddingTop: '30%',
+};
+const ccStyle = {
+  margin: 'auto',
+  height: '20px',
+  width: '20px',
 };
 const footerStyle = {
   textAlign: 'center',
@@ -45,10 +59,11 @@ class UnitCard extends React.Component {
     super(props);
 
     this.state = {
-      rarity: props.rarity,
+      cc: props.cc,
+      disabled: props.disabled,
       icon: props.icon,
       label: props.label,
-      disabled: props.disabled,
+      rarity: props.rarity,
     };
     this.size = props.size;
 
@@ -87,7 +102,15 @@ class UnitCard extends React.Component {
               })}
           </div>
           <div style={iconContainerStyle}>
-            {this.state.icon}
+            <div style={iconStyle}>
+              {this.state.icon}
+            </div>
+            {
+              this.state.cc &&
+              <div style={ccContainerStyle}>
+                <CCIcon style={ccStyle} />
+              </div>
+            }
           </div>
           <div style={footerStyle}>
             {this.state.label}
@@ -101,6 +124,7 @@ class UnitCard extends React.Component {
 
 UnitCard.propTypes = {
   rarity: PropTypes.oneOf(Object.keys(rarityData)).isRequired,
+  cc: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: PropTypes.node,
   label: PropTypes.string,
@@ -109,6 +133,7 @@ UnitCard.propTypes = {
 };
 
 UnitCard.defaultProps = {
+  cc: false,
   disabled: false,
   icon: '',
   label: '',
