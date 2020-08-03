@@ -1,0 +1,11 @@
+<svg width="52.825" height="53.194" version="1.1" viewBox="0 0 52.825 53.194" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.983 -1.1656)">
+  <g>
+   <rect transform="rotate(90)" x="47.359" y="-6.017" width="7" height="7"/>
+   <rect transform="rotate(45)" x="33.232" y="18.042" width="8.6889" height="12.188"/>
+   <rect transform="rotate(45)" x="21.793" y="8.146" width="31.346" height="8.811"/>
+   <rect transform="rotate(45)" x="28.2" y="5.4253" width="18.763" height="1.7182"/>
+   <path d="m44.452 1.4363 7.3894-0.27066-0.27067 7.3894-25.02 24.226-6.6682-6.6682z"/>
+  </g>
+ </g>
+</svg>
