@@ -5,5 +5,17 @@
   "search": {
     "placeholder": "クラス名...",
     "emptyLabel": "見つかりませんでした"
+  },
+  "spirit": {
+    "iron": "鉄聖霊アイナ",
+    "bronze": "銅聖霊サラ",
+    "silver": "銀聖霊シリル",
+    "gold": "金聖霊ニナ",
+    "platinum": "白金聖霊セリア",
+    "black": "黒聖霊フローリカ",
+    "generic": "聖霊女王グラディウス",
+    "kakusei1": "覚醒聖霊ヴィクトワール",
+    "kakusei2": "常闇聖霊オニキス",
+    "kakusei_skill": "技覚醒聖霊ナイアス"
   }
 }
