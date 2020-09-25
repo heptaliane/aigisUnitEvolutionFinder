@@ -67,7 +67,12 @@ class UnitCard extends React.Component {
     };
     this.size = props.size;
 
-    this.handleClick = props.onClick.bind(this);
+    this.onClick = props.onClick;
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick({currentTarget}) {
+    this.onClick(currentTarget);
   }
 
   render() {
