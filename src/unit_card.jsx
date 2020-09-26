@@ -37,7 +37,7 @@ const iconStyle = {
   marginBottom: 'auto',
 };
 const ccContainerStyle = {
-  paddingTop: '30%',
+  paddingTop: '35%',
 };
 const ccStyle = {
   margin: 'auto',

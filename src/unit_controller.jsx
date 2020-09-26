@@ -12,6 +12,8 @@ import {
 import {spirit as spiritText} from '../data/text_ja.json';
 
 
+const iconSize = 60;
+
 const containerStyle = {
   display: 'grid',
   padding: '20px',
@@ -66,10 +68,10 @@ class UnitController extends React.Component {
                   cc={this.state.cc[i]}
                   disabled={this.state.immutable[i]}
                   icon={
-                    React.createElement(
-                      ClassIcon[this.state.icon[i]],
-                      null, null
-                    )
+                    React.createElement(ClassIcon[this.state.icon[i]], {
+                      height: iconSize,
+                      width: iconSize,
+                    }, null)
                   }
                   label={
                     this.state.cc[i] ?
