@@ -5,7 +5,10 @@ import UnitCard from './unit_card.jsx';
 import ClassIcon from './class_icon.jsx';
 
 import rarityData from '../data/rarity.json';
-import {base_label as lbls} from '../data/jobs.json';
+import {
+  base_label as blbls,
+  label as lbls,
+} from '../data/jobs.json';
 import {spirit as spiritText} from '../data/text_ja.json';
 
 
@@ -68,7 +71,11 @@ class UnitController extends React.Component {
                       null, null
                     )
                   }
-                  label={lbls[this.state.icon[i]]}
+                  label={
+                    this.state.cc[i] ?
+                      lbls[this.state.icon[i]][1].label :
+                      blbls[this.state.icon[i]]
+                  }
                   rarity={this.state.rarity[i]}
                   onClick={this.handleClick}
                 />

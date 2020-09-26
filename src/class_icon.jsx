@@ -1,6 +1,9 @@
+import React from 'react';
+
+import ResizableSVG from './resizable_svg.jsx';
+
 import {base_label as blbls} from '../data/jobs.json';
 import ilbls from '../data/icons.json';
-
 
 const icons = Object.entries(ilbls).map(([
   basename,
@@ -16,7 +19,11 @@ const icons = Object.entries(ilbls).map(([
     idx,
     svg,
   ]) => {
-    obj[idx] = svg.default;
+    const svgNode = React.createElement(svg.default, null, null);
+    obj[idx] = (props) => {
+      const newProps = Object.assign({svg: svgNode}, props);
+      return React.createElement(ResizableSVG, newProps, null);
+    };
     return obj;
   }, {});
 
