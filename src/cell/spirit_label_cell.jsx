@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import {spirit as spiritText} from '../../data/text_ja.json';
 
 
+const labelStyle = {
+  margin: '10px',
+};
+
 const SpiritLabelCell = function(props) {
   return (
     <td>
@@ -13,7 +17,9 @@ const SpiritLabelCell = function(props) {
         width: props.width,
       }}
       />
-      {spiritText[props.label]}
+      <span style={labelStyle}>
+        {spiritText[props.label]}
+      </span>
     </td>
   );
 };

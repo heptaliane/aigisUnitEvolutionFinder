@@ -5,6 +5,11 @@ import ClassIcon from '../class_icon.jsx';
 import {label as jobs} from '../../data/jobs.json';
 import {table as tableText} from '../../data/text_ja.json';
 
+
+const labelStyle = {
+  margin: '10px',
+};
+
 const OrbLabelCell = function(props) {
   const ccLbl = jobs[props.classId][1].label;
   return (
@@ -13,7 +18,9 @@ const OrbLabelCell = function(props) {
         height: props.height,
         width: props.width,
       }, null)}
-      {`${ccLbl}${tableText.orb}`}
+      <span style={labelStyle}>
+        {`${ccLbl}${tableText.orb}`}
+      </span>
     </td>
   );
 };

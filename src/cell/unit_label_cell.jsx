@@ -5,6 +5,10 @@ import ClassIcon from '../class_icon.jsx';
 import {base_label as blbls} from '../../data/jobs.json';
 
 
+const labelStyle = {
+  margin: '10px',
+};
+
 const UnitLabelCell = function(props) {
   return (
     <td>
@@ -12,7 +16,9 @@ const UnitLabelCell = function(props) {
         height: props.height,
         width: props.width,
       }, null)}
-      {blbls[props.classId]}
+      <span style={labelStyle}>
+        {blbls[props.classId]}
+      </span>
     </td>
   );
 };
