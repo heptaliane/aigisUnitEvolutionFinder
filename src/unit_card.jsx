@@ -8,6 +8,7 @@ import CCIcon from '../icons/prod/cc.svg';
 
 const containerStyle = {
   borderRadius: '10px',
+  color: 'black',
   padding: '10px',
   position: 'relative',
   display: 'block',
@@ -82,7 +83,12 @@ class UnitCard extends React.Component {
         style={
           Object.assign(
             {}, containerStyle,
-            {background: getColor(this.state.rarity)}
+            {background: getColor(this.state.rarity)},
+            {
+              cursor: this.state.disabled ?
+                'not-allowed' :
+                'pointer',
+            }
           )
         }
         type="button"

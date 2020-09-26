@@ -11,8 +11,8 @@ import {spirit as spiritText} from '../data/text_ja.json';
 
 const containerStyle = {
   display: 'grid',
-  margin: '10px',
-  gridGap: '10px',
+  padding: '20px',
+  gridGap: '20px',
   gridTemplateColumns: 'fit-content(100px) fit-content(100px)',
   gridTemplateRows: 'fit-content(100px) fit-content(100px)',
 };
@@ -36,6 +36,7 @@ class UnitController extends React.Component {
       icon: props.icon,
       rarity: props.rarity,
       cc: props.cc,
+      immutable: props.immutable,
       spirit: props.spirit,
     };
 
@@ -60,6 +61,7 @@ class UnitController extends React.Component {
                 <UnitCard
                   key={`card-${i}`}
                   cc={this.state.cc[i]}
+                  disabled={this.state.immutable[i]}
                   icon={
                     React.createElement(
                       ClassIcon[this.state.icon[i]],
@@ -75,6 +77,7 @@ class UnitController extends React.Component {
           })}
         <div name="spirit">
           <UnitCard
+            disabled={this.state.immutable[this.state.immutable.length - 1]}
             label={spiritText[this.state.spirit]}
             rarity={spiritRarity[this.state.spirit]}
             onClick={this.handleClick}
@@ -89,6 +92,7 @@ class UnitController extends React.Component {
 UnitController.propTypes = {
   cc: PropTypes.arrayOf(PropTypes.bool),
   icon: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(ClassIcon))),
+  immutable: PropTypes.arrayOf(PropTypes.bool),
   rarity: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(rarityData))),
   spirit: PropTypes.oneOf(Object.keys(spiritText)),
   onClick: PropTypes.func,
@@ -97,6 +101,7 @@ UnitController.propTypes = {
 UnitController.defaultProps = {
   cc: [],
   icon: [],
+  immutable: [],
   rarity: [],
   spirit: Object.keys(spiritText)[0],
   onClick: (args) => {
