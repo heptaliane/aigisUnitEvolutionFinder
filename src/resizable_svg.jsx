@@ -43,7 +43,6 @@ class ResizableSVG extends React.Component {
   }
 
   render() {
-    console.log(this.state.svg);
     return (
       <svg
         ref={this.setReferenceSVG}

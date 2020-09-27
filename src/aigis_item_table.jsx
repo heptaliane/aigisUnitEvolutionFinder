@@ -29,6 +29,10 @@ const spiritRarity = Object.keys(spiritText).reduce((obj, key) => {
 
 class AigisItemTable extends React.Component {
 
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
+
   constructor(props) {
     super(props);
 
