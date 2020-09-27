@@ -17,5 +17,11 @@
     "kakusei1": "覚醒聖霊ヴィクトワール",
     "kakusei2": "常闇聖霊オニキス",
     "kakusei_skill": "技覚醒聖霊ナイアス"
+  },
+  "table": {
+    "rarity": "レア度",
+    "class": "クラス名",
+    "amount": "必要数",
+    "orb": "の宝珠"
   }
 }

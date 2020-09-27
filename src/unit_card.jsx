@@ -51,7 +51,8 @@ const footerStyle = {
 
 const getColor = function(rarity) {
   const color = rarityData[rarity].color;
-  return `linear-gradient(-45deg, ${color[0]}, ${color[1]})`;
+  const colorStr = `${color.join(',')}, ${color.reverse().join(',')}`;
+  return `repeating-linear-gradient(-45deg, ${colorStr} 40%)`;
 };
 
 class UnitCard extends React.Component {
