@@ -12,12 +12,34 @@ import {
 
 
 const containerStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
+  float: 'left',
+  left: '50%',
+  margin: 'auto',
+  position: 'relative',
 };
 
-const controllerStyle = {
+const controllerOuterStyle = {
+  backgroundColor: '#690300',
+  border: '7px double #bcad7d',
   float: 'left',
+  left: '-50%',
+  margin: '20px',
+  padding: '20px',
+  position: 'relative',
+};
+
+const controllerInnerStyle = {
+  border: '5px solid #873230',
+  borderRadius: '20px',
+  backgroundColor: '#690300',
+};
+
+const tableStyle = {
+  float: 'left',
+  left: '-50%',
+  margin: '20px',
+  position: 'relative',
+  textAlign: 'left',
 };
 
 const ccLevel = 0;
@@ -82,7 +104,7 @@ const getSpiritList = function(rarity, level, status) {
     }
   }
 
-  return spirits;
+  return spirits.reverse();
 };
 
 const updateUnitLut = function(lut, id, rarity) {
@@ -168,60 +190,64 @@ class UnitView extends React.Component {
 
   render() {
     return (
-      <div style={containerStyle}>
-        <div style={controllerStyle}>
-          <UnitController
-            cc={this.state.status.slice(0, spiritIndex).map((_, i) => {
-              return this.state.level !== ccLevel && this.state.status[i];
-            })}
-            icon={
-              this.state.level === ccLevel ?
-                ccData[this.state.classId].map((i) => {
-                  return String(i);
-                }) :
-                kakuseiData[this.state.classId].map((i) => {
-                  return String(i);
-                })
-            }
-            immutable={[
-              this.state.level === ccLevel,
-              this.state.level === ccLevel,
-              this.state.level === ccLevel,
-              this.state.level !== ccLevel ||
-              !rarityData[this.state.rarity].has_spirit,
-            ]}
-            rarity={getRarityLabels(
-              this.state.rarity,
-              this.state.level,
-              this.state.status
-            )}
-            spirit={getSpiritLabel(
-              this.state.rarity,
-              this.state.level,
-              this.state.status[spiritIndex]
-            )}
-            onClick={this.handleStateChange}
-          />
-        </div>
-        <div>
-          <AigisItemTable
-            orb={getOrbList(
-              this.state.classId,
-              this.state.rarity,
-              this.state.level
-            )}
-            spirit={getSpiritList(
-              this.state.rarity,
-              this.state.level,
-              this.state.status
-            )}
-            unit={getUnitList({
-              classId: this.state.classId,
-              rerity: this.state.rarity,
-              level: this.state.level,
-              status: this.state.status,
-            })}
-          />
+      <div style={{overflow: 'hidden'}}>
+        <div style={containerStyle}>
+          <div style={controllerOuterStyle}>
+            <div style={controllerInnerStyle}>
+              <UnitController
+                cc={this.state.status.slice(0, spiritIndex).map((_, i) => {
+                  return this.state.level !== ccLevel && this.state.status[i];
+                })}
+                icon={
+                  this.state.level === ccLevel ?
+                    ccData[this.state.classId].map((i) => {
+                      return String(i);
+                    }) :
+                    kakuseiData[this.state.classId].map((i) => {
+                      return String(i);
+                    })
+                }
+                immutable={[
+                  this.state.level === ccLevel,
+                  this.state.level === ccLevel,
+                  this.state.level === ccLevel,
+                  this.state.level !== ccLevel ||
+                  !rarityData[this.state.rarity].has_spirit,
+                ]}
+                rarity={getRarityLabels(
+                  this.state.rarity,
+                  this.state.level,
+                  this.state.status
+                )}
+                spirit={getSpiritLabel(
+                  this.state.rarity,
+                  this.state.level,
+                  this.state.status[spiritIndex]
+                )}
+                onClick={this.handleStateChange}
+              />
+            </div>
+          </div>
+          <div style={tableStyle}>
+            <AigisItemTable
+              orb={getOrbList(
+                this.state.classId,
+                this.state.rarity,
+                this.state.level
+              )}
+              spirit={getSpiritList(
+                this.state.rarity,
+                this.state.level,
+                this.state.status
+              )}
+              unit={getUnitList({
+                classId: this.state.classId,
+                rerity: this.state.rarity,
+                level: this.state.level,
+                status: this.state.status,
+              })}
+            />
+          </div>
         </div>
       </div>
     );
