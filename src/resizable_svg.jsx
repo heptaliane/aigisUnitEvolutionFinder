@@ -46,6 +46,7 @@ class ResizableSVG extends React.Component {
     return (
       <svg
         ref={this.setReferenceSVG}
+        fill="currentColor"
         height={this.state.height}
         width={this.state.width}
       >

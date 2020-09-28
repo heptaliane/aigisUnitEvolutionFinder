@@ -47,7 +47,9 @@ class AigisItemTable extends React.Component {
     return (
       <Table
         bordered={true}
+        hover={true}
         striped={true}
+        variant="dark"
       >
         <thead>
           <tr>

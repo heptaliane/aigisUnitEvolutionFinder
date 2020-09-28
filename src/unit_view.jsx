@@ -11,7 +11,12 @@ import {
 } from '../data/jobs.json';
 
 
-const containerStyle = {
+const outerContainerStyle = {
+  overflow: 'hidden',
+  backgroundColor: '#c7bfb2',
+};
+
+const innerContainerStyle = {
   float: 'left',
   left: '50%',
   margin: 'auto',
@@ -190,8 +195,8 @@ class UnitView extends React.Component {
 
   render() {
     return (
-      <div style={{overflow: 'hidden'}}>
-        <div style={containerStyle}>
+      <div style={outerContainerStyle}>
+        <div style={innerContainerStyle}>
           <div style={controllerOuterStyle}>
             <div style={controllerInnerStyle}>
               <UnitController

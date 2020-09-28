@@ -1,6 +1,10 @@
 {
   "iron": {
     "color": ["#191513", "#040405", "#2b2b2b", "#424242", "#5b5b5b", "#858585"],
+    "style": {
+      "background": "gray",
+      "color": "white"
+    },
     "has_spirit": true,
     "rarity": 1,
     "orb": null,
@@ -8,6 +12,10 @@
   },
   "bronze": {
     "color": ["#632200", "#883904", "#b25503", "#ea7900", "#d03900"],
+    "style": {
+      "background": "brown",
+      "color": "white"
+    },
     "has_spirit": true,
     "rarity": 2,
     "orb": null,
@@ -15,6 +23,10 @@
   },
   "silver": {
     "color": ["#fefefe", "#dfe0e1", "#bcbcbe", "#9e9ea1", "#7a7a80", "#5f5e65"],
+    "style": {
+      "background": "silver",
+      "color": "black"
+    },
     "has_spirit": true,
     "rarity": 3,
     "orb": null,
@@ -22,6 +34,10 @@
   },
   "gold": {
     "color": ["#73280f", "#c8610b", "#c8610b", "#fcc14c", "#fcc14c", "#966245"],
+    "style": {
+      "background": "gold",
+      "color": "black"
+    },
     "has_spirit": true,
     "rarity": 4,
     "orb": 1,
@@ -29,6 +45,10 @@
   },
   "platinum": {
     "color": ["#160f49", "#454a71", "#647697", "#9097b2", "#b0bbc8", "#d6dcec"],
+    "style": {
+      "background": "white",
+      "color": "black"
+    },
     "has_spirit": true,
     "rarity": 5,
     "orb": 2,
@@ -36,6 +56,10 @@
   },
   "sapphire": {
     "color": ["#0d1354", "#1333ac", "#1745f9", "#4093fc", "#94c0e1"],
+    "style": {
+      "background": "blue",
+      "color": "white"
+    },
     "has_spirit": false,
     "rarity": 5,
     "orb": 2,
@@ -43,6 +67,10 @@
   },
   "black": {
     "color": ["#0d0500", "#322005", "#6c4d0f", "#7e7049", "#b1a27d", "#e8d8b0"],
+    "style": {
+      "background": "black",
+      "color": "white"
+    },
     "has_spirit": true,
     "rarity": 6,
     "orb": 3,

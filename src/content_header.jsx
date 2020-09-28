@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Navbar from 'react-bootstrap/Navbar';
 import HouseIcon from 'bootstrap-icons/icons/house-fill.svg';
 
 import SelectionInput from './selection_input.jsx';
+import RaritySelection from './rarity_selection.jsx';
+import LevelSelection from './level_selection.jsx';
+import rarityData from '../data/rarity.json';
 import {header as headerText} from '../data/text_ja.json';
 
-const notFound = -1;
 
+const middleComponentStyle = {
+  display: 'grid',
+  textAlign: 'center',
+  minWidth: '420px',
+  gridTemplateColumns: '1fr 1fr',
+};
+
+const componentStyle = {
+  margin: '10px',
+};
 
 class ContentHeader extends React.Component {
 
@@ -17,26 +27,31 @@ class ContentHeader extends React.Component {
     super(props);
 
     this.state = {
-      level: String(props.level),
+      level: props.level,
       label: props.label,
+      rarity: props.rarity,
       implLevels: props.implLevels,
     };
     this.href = props.href;
     this.selections = props.selections;
-    this.callbackSelect = props.onSelect;
-    this.callbackSearch = props.onSearch;
+    this.callback = props.onChange;
 
-    this.handleSelect = this.handleSelect.bind(this);
+    this.handleLevelChange = this.handleLevelChange.bind(this);
+    this.handleRarityChange = this.handleRarityChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSelect({target}) {
-    this.callbackSelect(Number(target.value));
-    this.setState({level: target.value});
+  handleLevelChange(level) {
+    this.callback({level: level});
+    this.setState({level: level});
   }
 
   handleSearch(value) {
-    this.callbackSearch(value);
+    this.callback(value);
+  }
+
+  handleRarityChange(rarity) {
+    this.callback({rarity: rarity});
   }
 
   render() {
@@ -56,44 +71,24 @@ class ContentHeader extends React.Component {
         <Navbar.Collapse id="header-collapse">
           <div
             className="ml-auto"
-            style={{
-              textAlign: 'center',
-              marginTop: '10px',
-              marginBottom: '10px',
-              minWidth: '420px',
-            }}
+            style={middleComponentStyle}
           >
-            <ButtonGroup
-              style={{width: '90%'}}
-              toggle={true}
-            >
-              {
-                headerText.level.map((v, i) => {
-                  return (
-                    <ToggleButton
-                      key={`level-${i}`}
-                      checked={this.state.level === String(i)}
-                      disabled={this.state.implLevels.indexOf(i) === notFound}
-                      type="radio"
-                      value={String(i)}
-                      variant={
-                        this.state.implLevels.indexOf(i) === notFound ?
-                          'secondary' :
-                          'primary'
-                      }
-                      onChange={this.handleSelect}
-                    >
-                      {v}
-                    </ToggleButton>
-                  );
-                })
-              }
-            </ButtonGroup>
+            <LevelSelection
+              active={this.state.level}
+              implemented={this.state.implLevels}
+              onChange={this.handleLevelChange}
+            />
+            <RaritySelection
+              active={this.state.rarity}
+              onChange={this.handleRarityChange}
+            />
           </div>
-          <SelectionInput
-            selections={this.selections}
-            onSelect={this.handleSearch}
-          />
+          <div style={componentStyle}>
+            <SelectionInput
+              selections={this.selections}
+              onSelect={this.handleSearch}
+            />
+          </div>
         </Navbar.Collapse>
       </Navbar>
     );
@@ -109,8 +104,8 @@ ContentHeader.propTypes = {
   }))),
   label: PropTypes.string,
   level: PropTypes.number,
-  onSearch: PropTypes.func,
-  onSelect: PropTypes.func,
+  rarity: PropTypes.oneOf(Object.keys(rarityData)),
+  onChange: PropTypes.func,
 };
 
 ContentHeader.defaultProps = {
@@ -118,10 +113,8 @@ ContentHeader.defaultProps = {
   implLevels: [],
   label: '',
   level: 1,
-  onSelect: (args) => {
-    return console.log(args);
-  },
-  onSearch: (args) => {
+  rarity: 'black',
+  onChange: (args) => {
     return console.log(args);
   },
 };
