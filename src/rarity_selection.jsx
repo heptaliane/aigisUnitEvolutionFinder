@@ -13,6 +13,10 @@ const containerStyle = {
 
 class RaritySelection extends React.Component {
 
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
+
   constructor(props) {
     super(props);
 

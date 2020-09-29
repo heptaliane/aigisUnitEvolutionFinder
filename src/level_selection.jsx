@@ -18,6 +18,10 @@ const disabledItemStyle = {
 
 class LevelSelection extends React.Component {
 
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
