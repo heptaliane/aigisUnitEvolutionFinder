@@ -4,7 +4,8 @@
   },
   "search": {
     "placeholder": "クラス名...",
-    "emptyLabel": "見つかりませんでした"
+    "emptyLabel": "見つかりませんでした",
+    "pagination": "さらに候補を表示"
   },
   "spirit": {
     "iron": "鉄聖霊アイナ",

@@ -21,16 +21,22 @@ class SelectableInput extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
+    this.setReferenceInput = this.setReferenceInput.bind(this);
   }
 
   handleClick(selections) {
     if (selections.length > 0) {
       this.callback(selections[0]);
+      this.input.clear();
     }
   }
 
   handleChange() {
     this.filter = null;
+  }
+
+  setReferenceInput(ref) {
+    this.input = ref;
   }
 
   applyFilter(option, {text}) {
@@ -54,11 +60,14 @@ class SelectableInput extends React.Component {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <Typeahead
+            ref={this.setReferenceInput}
+            clearButton={true}
             emptyLabel={searchText.emptyLabel}
             filterBy={this.applyFilter}
             id="search"
             labelKey="name"
             options={Object.keys(this.lut)}
+            paginationText={searchText.pagination}
             placeholder={searchText.placeholder}
             onChange={this.handleClick}
             onInputChange={this.handleChange}
