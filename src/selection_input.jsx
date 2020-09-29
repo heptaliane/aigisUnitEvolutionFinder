@@ -17,9 +17,11 @@ class SelectableInput extends React.Component {
     this.lut = props.selections;
     this.callback = props.onSelect;
     this.filter = null;
+    this.shouldClear = false;
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
     this.setReferenceInput = this.setReferenceInput.bind(this);
   }
@@ -27,12 +29,19 @@ class SelectableInput extends React.Component {
   handleClick(selections) {
     if (selections.length > 0) {
       this.callback(selections[0]);
-      this.input.clear();
+      this.shouldClear = true;
     }
   }
 
   handleChange() {
     this.filter = null;
+  }
+
+  handleFocus() {
+    if (this.shouldClear) {
+      this.input.clear();
+      this.shouldClear = false;
+    }
   }
 
   setReferenceInput(ref) {
@@ -61,7 +70,6 @@ class SelectableInput extends React.Component {
           </InputGroup.Prepend>
           <Typeahead
             ref={this.setReferenceInput}
-            clearButton={true}
             emptyLabel={searchText.emptyLabel}
             filterBy={this.applyFilter}
             id="search"
@@ -70,7 +78,9 @@ class SelectableInput extends React.Component {
             paginationText={searchText.pagination}
             placeholder={searchText.placeholder}
             onChange={this.handleClick}
+            onFocus={this.handleFocus}
             onInputChange={this.handleChange}
+            onKeyDown={this.handleFocus}
           />
         </InputGroup>
       </div>

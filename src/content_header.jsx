@@ -84,7 +84,7 @@ class ContentHeader extends React.Component {
   handleIdChange(label) {
     const {classId, level} = jobLut[label];
     const isValidLevel = implData[classId].indexOf(level) !== notFound;
-    const newLevel = level >= numLevels && isValidLevel ?
+    const newLevel = level < numLevels && isValidLevel ?
       level :
       defaultLevel;
 
