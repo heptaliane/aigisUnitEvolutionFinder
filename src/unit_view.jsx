@@ -170,6 +170,10 @@ const getUnitList = function({classId, rarity, level, status}) {
 
 class UnitView extends React.Component {
 
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -247,7 +251,7 @@ class UnitView extends React.Component {
               )}
               unit={getUnitList({
                 classId: this.state.classId,
-                rerity: this.state.rarity,
+                rarity: this.state.rarity,
                 level: this.state.level,
                 status: this.state.status,
               })}

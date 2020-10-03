@@ -11,11 +11,6 @@ const containerStyle = {
   margin: '10px',
 };
 
-const disabledItemStyle = {
-  color: '#495057',
-  background: '#e9ecef',
-};
-
 class LevelSelection extends React.Component {
 
   static getDerivedStateFromProps(props) {
@@ -47,18 +42,15 @@ class LevelSelection extends React.Component {
           onChange={this.handleChange}
         >
           {headerText.level.map((lbl, idx) => {
-            return (
-              <option
-                key={lbl}
-                disabled={this.state.implemented.indexOf(idx) === notFound}
-                style={this.state.implemented.indexOf(idx) === notFound ?
-                  disabledItemStyle :
-                  {}
-                }
-              >
-                {lbl}
-              </option>
-            );
+            if (this.state.implemented.indexOf(idx) !== notFound) {
+              return (
+                <option
+                  key={lbl}
+                >
+                  {lbl}
+                </option>
+              );
+            }
           })}
         </Form.Control>
       </div>

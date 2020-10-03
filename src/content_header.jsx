@@ -133,6 +133,7 @@ class ContentHeader extends React.Component {
             />
             <RaritySelection
               active={this.state.rarity}
+              level={this.state.level}
               onChange={this.handleRarityChange}
             />
           </div>

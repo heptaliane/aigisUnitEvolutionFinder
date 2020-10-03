@@ -6,9 +6,17 @@ import rarityData from '../data/rarity.json';
 
 
 const rarity = Object.keys(rarityData);
+const ccLevel = 0;
 
 const containerStyle = {
   margin: '10px',
+};
+
+const isAvailableLabel = function(lbl, level) {
+  if (level === ccLevel) {
+    return rarityData[lbl].cc !== null;
+  }
+  return rarityData[lbl].orb !== null;
 };
 
 class RaritySelection extends React.Component {
@@ -22,6 +30,7 @@ class RaritySelection extends React.Component {
 
     this.state = {
       active: props.active,
+      level: props.level,
     };
     this.callback = props.onChange;
     this.handleChange = this.handleChange.bind(this);
@@ -43,14 +52,16 @@ class RaritySelection extends React.Component {
           onChange={this.handleChange}
         >
           {rarity.map((lbl) => {
-            return (
-              <option
-                key={lbl}
-                style={rarityData[lbl].style}
-              >
-                {lbl.toUpperCase()}
-              </option>
-            );
+            if (isAvailableLabel(lbl, this.state.level)) {
+              return (
+                <option
+                  key={lbl}
+                  style={rarityData[lbl].style}
+                >
+                  {lbl.toUpperCase()}
+                </option>
+              );
+            }
           })}
         </Form.Control>
       </div>
@@ -61,11 +72,13 @@ class RaritySelection extends React.Component {
 
 RaritySelection.propTypes = {
   active: PropTypes.oneOf(rarity),
+  level: PropTypes.number,
   onChange: PropTypes.func,
 };
 
 RaritySelection.defaultProps = {
   active: rarity[rarity.length - 1],
+  level: ccLevel,
   onChange: (args) => {
     console.log(args);
   },
