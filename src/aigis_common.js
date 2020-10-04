@@ -181,7 +181,7 @@ export default deepFreeze({
     if (aigisRarity.data[rarity] === undefined) {
       return false;
     }
-    if (level === this.ccLevel) {
+    if (level === aigisConstant.ccLevel) {
       return aigisRarity.data[rarity].cc !== null;
     }
     return aigisRarity.data[rarity].orb !== null;
@@ -208,7 +208,7 @@ export default deepFreeze({
   getDisplayedSpirit: function(rarity, level, useGeneric) {
     if (level === aigisConstant.kakuseiLevel1) {
       return aigisConstant.kakusei1SpiritKey;
-    } else if (level === aigisConstant.kakusei2SpiritKey) {
+    } else if (level === aigisConstant.kakuseiLevel2) {
       return aigisConstant.kakusei2SpiritKey;
     } else if (aigisRarity.data[rarity].has_spirit && !useGeneric) {
       return rarity;
@@ -298,4 +298,12 @@ export default deepFreeze({
       };
     });
   },
+
+  getClassLabelWithLevel: function(classId, targetLevel) {
+    return aigisClass.label[classId].filter(({level}) => {
+      return level === targetLevel;
+    }).map(({label}) => {
+      return label;
+    });
+  }
 });

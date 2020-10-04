@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Navbar from 'react-bootstrap/Navbar';
+import Badge from 'react-bootstrap/Badge';
 import HouseIcon from 'bootstrap-icons/icons/house-fill.svg';
+import RightArrowIcon from 'bootstrap-icons/icons/caret-right-fill.svg';
 
 import SelectionInput from './selection_input.jsx';
 import RaritySelection from './rarity_selection.jsx';
@@ -22,7 +24,29 @@ const componentStyle = {
   margin: '10px',
 };
 
+const homeStyle = {
+  cursor: 'pointer',
+  padding: '10px',
+};
+
+const textAreaStyle = {
+  padding: '10px',
+};
+
+const arrowStyle = {
+  marginLeft: '5px',
+  marginRight: '5px',
+};
+
+const badgeStyle = {
+  margin: '5px',
+};
+
 class ContentHeader extends React.Component {
+
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
 
   constructor(props) {
     super(props);
@@ -79,16 +103,59 @@ class ContentHeader extends React.Component {
         expand="lg"
         variant="dark"
       >
-        <Navbar.Brand onClick={this.handleReset}>
+        <Navbar.Brand
+          style={homeStyle}
+          onClick={this.handleReset}
+        >
           <HouseIcon />
         </Navbar.Brand>
         <Navbar.Brand>
           {
             this.state.classId === null ?
               '' :
-              common.unitClass.baseLabel[this.state.classId]
+              `${common.unitClass.baseLabel[this.state.classId]}`
           }
         </Navbar.Brand>
+        <Navbar.Text style={textAreaStyle}>
+          {
+            this.state.classId === null ?
+              '' :
+
+              <div>
+                <Badge
+                  style={badgeStyle}
+                  variant="primary"
+                >
+                  {
+                    common.getClassLabelWithLevel(
+                      this.state.classId,
+                      this.state.level
+                    )
+                  }
+                </Badge>
+                <RightArrowIcon
+                  height="1.5em"
+                  style={arrowStyle}
+                  width="1.5em"
+                />
+                {
+                  common.getClassLabelWithLevel(
+                    this.state.classId,
+                    this.state.level + 1
+                  ).map((label) => {
+                    return (
+                      <Badge
+                        key={label}
+                        style={badgeStyle}
+                        variant="primary"
+                      >
+                        {label}
+                      </Badge>
+                    );
+                  })}
+              </div>
+          }
+        </Navbar.Text>
         <Navbar.Toggle aria-controls="header-collapse" />
         <Navbar.Collapse id="header-collapse">
           <div
