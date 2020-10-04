@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 
-import {header as headerText} from '../data/text_ja.json';
+import common from './aigis_common.js';
 
-
-const notFound = -1;
 
 const containerStyle = {
   margin: '10px',
@@ -28,7 +26,7 @@ class LevelSelection extends React.Component {
   }
 
   handleChange({target}) {
-    const idx = headerText.level.indexOf(target.value);
+    const idx = common.level.label.indexOf(target.value);
     this.callback(idx);
     this.setState({active: idx});
   }
@@ -38,11 +36,11 @@ class LevelSelection extends React.Component {
       <div style={containerStyle}>
         <Form.Control
           as="select"
-          value={headerText.level[this.state.active]}
+          value={common.level.label[this.state.active]}
           onChange={this.handleChange}
         >
-          {headerText.level.map((lbl, idx) => {
-            if (this.state.implemented.indexOf(idx) !== notFound) {
+          {common.level.label.map((lbl, idx) => {
+            if (common.hasItem(this.state.implemented, idx)) {
               return (
                 <option
                   key={lbl}
@@ -60,25 +58,15 @@ class LevelSelection extends React.Component {
 }
 
 LevelSelection.propTypes = {
-  active: PropTypes.oneOf(Array.from({
-    length: headerText.level.length,
-  }, (_, i) => {
-    return i;
-  })),
-  implemented: PropTypes.arrayOf(PropTypes.oneOf(Array.from({
-    length: headerText.level.length,
-  }, (_, i) => {
-    return i;
-  }))),
+  active: PropTypes.oneOf(common.level.keys),
+  implemented: PropTypes.arrayOf(PropTypes.oneOf(common.level.keys)),
   onChange: PropTypes.func,
 };
 
 LevelSelection.defaultProps = {
-  active: 0,
+  active: common.default.level,
   implemented: [],
-  onChange: (args) => {
-    console.log(args);
-  },
+  onChange: common.default.handler,
 };
 
 export default LevelSelection;

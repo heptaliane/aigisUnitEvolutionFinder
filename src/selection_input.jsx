@@ -6,7 +6,7 @@ import SearchIcon from 'bootstrap-icons/icons/search.svg';
 
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
-import {search as searchText} from '../data/text_ja.json';
+import common from './aigis_common.js';
 
 
 class SelectableInput extends React.Component {
@@ -70,13 +70,13 @@ class SelectableInput extends React.Component {
           </InputGroup.Prepend>
           <Typeahead
             ref={this.setReferenceInput}
-            emptyLabel={searchText.emptyLabel}
+            emptyLabel={common.text.search.emptyLabel}
             filterBy={this.applyFilter}
             id="search"
             labelKey="name"
             options={Object.keys(this.lut)}
-            paginationText={searchText.pagination}
-            placeholder={searchText.placeholder}
+            paginationText={common.text.search.pagination}
+            placeholder={common.text.search.placeholder}
             onChange={this.handleClick}
             onFocus={this.handleFocus}
             onInputChange={this.handleChange}
@@ -89,16 +89,14 @@ class SelectableInput extends React.Component {
 
 }
 
-SelectableInput.defaultProps = {
-  onSelect: (args) => {
-    return console.log(args);
-  },
-};
-
 SelectableInput.propTypes = {
   // {text: ruby}
   selections: PropTypes.objectOf(PropTypes.string).isRequired,
   onSelect: PropTypes.func,
+};
+
+SelectableInput.defaultProps = {
+  onSelect: common.default.handler,
 };
 
 export default SelectableInput;

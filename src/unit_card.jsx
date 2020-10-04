@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarIcon from 'bootstrap-icons/icons/star-fill.svg';
 
-import rarityData from '../data/rarity.json';
 import CCIcon from '../icons/prod/cc.svg';
+import common from './aigis_common.js';
 
+
+const gradientDegree = -45;
+const gradientRepeat = 2.5;
 
 const containerStyle = {
   borderRadius: '10px',
@@ -49,12 +52,6 @@ const footerStyle = {
   fontWeight: 'bold',
 };
 
-const getColor = function(rarity) {
-  const color = rarityData[rarity].color.concat();
-  const colorStr = `${color.join(',')}, ${color.reverse().join(',')}`;
-  return `repeating-linear-gradient(-45deg, ${colorStr} 40%)`;
-};
-
 class UnitCard extends React.Component {
 
   static getDerivedStateFromProps(props) {
@@ -88,7 +85,13 @@ class UnitCard extends React.Component {
         style={
           Object.assign(
             {}, containerStyle,
-            {background: getColor(this.state.rarity)},
+            {
+              background: common.gradientColor({
+                colors: common.rarity.data[this.state.rarity].color,
+                degree: gradientDegree,
+                repeat: gradientRepeat,
+              }),
+            },
             {
               cursor: this.state.disabled ?
                 'not-allowed' :
@@ -107,7 +110,7 @@ class UnitCard extends React.Component {
             }, borderStyle)}
         >
           <div style={starContainerStyle}>
-            {Array(rarityData[this.state.rarity].rarity).fill(null).
+            {Array(common.rarity.data[this.state.rarity].rarity).fill(null).
               map((_, i) => {
                 return (
                   <StarIcon
@@ -139,7 +142,7 @@ class UnitCard extends React.Component {
 }
 
 UnitCard.propTypes = {
-  rarity: PropTypes.oneOf(Object.keys(rarityData)).isRequired,
+  rarity: PropTypes.oneOf(common.rarity.keys).isRequired,
   cc: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: PropTypes.node,
@@ -154,9 +157,7 @@ UnitCard.defaultProps = {
   icon: '',
   label: '',
   size: 200,
-  onClick: (args) => {
-    return console.log(args);
-  },
+  onClick: common.default.handler,
 };
 
 export default UnitCard;

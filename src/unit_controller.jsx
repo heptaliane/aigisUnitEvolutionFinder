@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 
 import UnitCard from './unit_card.jsx';
 import ClassIcon from './class_icon.jsx';
-
-import rarityData from '../data/rarity.json';
-import {
-  base_label as blbls,
-  label as lbls,
-} from '../data/jobs.json';
-import {spirit as spiritText} from '../data/text_ja.json';
+import common from './aigis_common.js';
 
 
 const iconSize = 60;
+const nunit = 3;
 
 const containerStyle = {
   display: 'grid',
@@ -21,16 +16,6 @@ const containerStyle = {
   gridTemplateColumns: 'fit-content(100px) fit-content(100px)',
   gridTemplateRows: 'fit-content(100px) fit-content(100px)',
 };
-
-const nunit = 3;
-const spiritRarity = Object.keys(spiritText).reduce((obj, key) => {
-  if (rarityData[key] === undefined) {
-    obj[key] = 'black';
-  } else {
-    obj[key] = key;
-  }
-  return obj;
-}, {});
 
 class UnitController extends React.Component {
 
@@ -79,8 +64,8 @@ class UnitController extends React.Component {
                   }
                   label={
                     this.state.cc[i] ?
-                      lbls[this.state.icon[i]][1].label :
-                      blbls[this.state.icon[i]]
+                      common.unitClass.label[this.state.icon[i]][1].label :
+                      common.unitClass.baseLabel[this.state.icon[i]]
                   }
                   rarity={this.state.rarity[i]}
                   onClick={this.handleClick}
@@ -91,8 +76,8 @@ class UnitController extends React.Component {
         <div name="spirit">
           <UnitCard
             disabled={this.state.immutable[this.state.immutable.length - 1]}
-            label={spiritText[this.state.spirit]}
-            rarity={spiritRarity[this.state.spirit]}
+            label={common.spirit.label[this.state.spirit]}
+            rarity={common.spirit.rarity[this.state.spirit]}
             onClick={this.handleClick}
           />
         </div>
@@ -106,8 +91,8 @@ UnitController.propTypes = {
   cc: PropTypes.arrayOf(PropTypes.bool),
   icon: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(ClassIcon))),
   immutable: PropTypes.arrayOf(PropTypes.bool),
-  rarity: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(rarityData))),
-  spirit: PropTypes.oneOf(Object.keys(spiritText)),
+  rarity: PropTypes.arrayOf(PropTypes.oneOf(common.rarity.keys)),
+  spirit: PropTypes.oneOf(common.spirit.keys),
   onClick: PropTypes.func,
 };
 
@@ -116,10 +101,8 @@ UnitController.defaultProps = {
   icon: [],
   immutable: [],
   rarity: [],
-  spirit: Object.keys(spiritText)[0],
-  onClick: (args) => {
-    return console.log(args);
-  },
+  spirit: common.default.rarity,
+  onClick: common.default.handler,
 };
 
 export default UnitController;
