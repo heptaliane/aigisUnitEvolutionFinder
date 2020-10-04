@@ -13,7 +13,6 @@ import {
 
 const outerContainerStyle = {
   overflow: 'hidden',
-  backgroundColor: '#c7bfb2',
 };
 
 const innerContainerStyle = {

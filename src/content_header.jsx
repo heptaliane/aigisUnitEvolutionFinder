@@ -6,41 +6,10 @@ import HouseIcon from 'bootstrap-icons/icons/house-fill.svg';
 import SelectionInput from './selection_input.jsx';
 import RaritySelection from './rarity_selection.jsx';
 import LevelSelection from './level_selection.jsx';
-import rarityData from '../data/rarity.json';
-import {header as headerText} from '../data/text_ja.json';
-import {
-  ruby,
-  base_label as blbl,
-} from '../data/jobs.json';
+import common from './aigis_common.js';
 
 
-const notFound = -1;
-const numLevels = headerText.level.length;
-const defaultLevel = 1;
-
-const jobSelection = Object.keys(ruby).reduce((obj, k) => {
-  obj[ruby[k].label] = k;
-  return obj;
-}, {});
-
-const jobLut = Object.keys(ruby).reduce((obj, k) => {
-  obj[ruby[k].label] = {
-    level: ruby[k].level,
-    classId: ruby[k].id,
-  };
-  return obj;
-}, {});
-
-const implData = Object.keys(jobLut).reduce((arr, k) => {
-  const idx = jobLut[k].classId;
-  if (arr[idx] === undefined) {
-    arr[idx] = [];
-  }
-  if (jobLut[k].level > 0) {
-    arr[idx].push(jobLut[k].level - 1);
-  }
-  return arr;
-}, []);
+const implementedLevel = common.unitClass.implementedLevel;
 
 const middleComponentStyle = {
   display: 'grid',
@@ -82,11 +51,11 @@ class ContentHeader extends React.Component {
   }
 
   handleIdChange(label) {
-    const {classId, level} = jobLut[label];
-    const isValidLevel = implData[classId].indexOf(level) !== notFound;
-    const newLevel = level < numLevels && isValidLevel ?
+    const {classId, level} = common.unitClass.ruby.lut[label];
+    const isValidLevel = common.hasItem(implementedLevel, level);
+    const newLevel = common.hasItem(common.level.keys, level) && isValidLevel ?
       level :
-      defaultLevel;
+      common.default.level;
 
     this.setState({
       classId: classId,
@@ -117,7 +86,7 @@ class ContentHeader extends React.Component {
           {
             this.state.classId === null ?
               '' :
-              blbl[this.state.classId]
+              common.unitClass.baseLabel[this.state.classId]
           }
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="header-collapse" />
@@ -128,7 +97,7 @@ class ContentHeader extends React.Component {
           >
             <LevelSelection
               active={this.state.level}
-              implemented={implData[this.state.classId]}
+              implemented={implementedLevel[this.state.classId]}
               onChange={this.handleLevelChange}
             />
             <RaritySelection
@@ -139,7 +108,7 @@ class ContentHeader extends React.Component {
           </div>
           <div style={componentStyle}>
             <SelectionInput
-              selections={jobSelection}
+              selections={common.unitClass.ruby.selection}
               onSelect={this.handleIdChange}
             />
           </div>
@@ -151,24 +120,17 @@ class ContentHeader extends React.Component {
 }
 
 ContentHeader.propTypes = {
-  classId: PropTypes.oneOf(Array.from({length: implData.length + 1}).
-    map((_, i) => {
-      return i < implData.length ?
-        i :
-        null;
-    })),
+  classId: PropTypes.oneOf(common.unitClass.classId),
   level: PropTypes.number,
-  rarity: PropTypes.oneOf(Object.keys(rarityData)),
+  rarity: PropTypes.oneOf(common.rarity.keys),
   onChange: PropTypes.func,
 };
 
 ContentHeader.defaultProps = {
-  classId: null,
-  level: defaultLevel,
-  rarity: 'black',
-  onChange: (args) => {
-    return console.log(args);
-  },
+  classId: common.default.classId,
+  level: common.default.level,
+  rarity: common.default.rarity,
+  onChange: common.default.handler,
 };
 
 export default ContentHeader;

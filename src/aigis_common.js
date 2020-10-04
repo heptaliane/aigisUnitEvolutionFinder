@@ -1,7 +1,13 @@
 import ClassIcon from './class_icon.jsx';
 import text from '../data/text_ja.json';
 import rarityData from '../data/rarity.json';
+import classData from '../data/jobs.json';
 
+
+const aigisConstant = {
+  ccLevel: 0,
+  notFound: -1,
+};
 
 const deepFreeze = function(obj) {
   if (Object.isFrozen(obj)) {
@@ -23,13 +29,12 @@ const getIndexArray = function(arr) {
   });
 };
 
-
-const aigisConstant = {
-  ccLevel: 0,
-  notFound: -1,
-};
+const hasItem = function(arr, item) {
+  return arr.indexOf(item) !== aigisConstant.notFound;
+}
 
 const aigisDefault = {
+  classId: null,
   rarity: 'black',
   level: 1,
   handler: function(args) {
@@ -48,7 +53,29 @@ const aigisLevel = {
 };
 
 const aigisClass = {
+  baseLabel: classData.base_label,
+  classId: getIndexArray(classData.base_label),
   icon: Object.keys(ClassIcon),
+  implementedLevel: classData.label.map((arr) => {
+    return arr.map(({level}) => {
+      return level - 1;
+    }).filter((level) => {
+      return hasItem(aigisLevel.keys, level);
+    });
+  }),
+  ruby: {
+    selection: Object.keys(classData.ruby).reduce((obj, k) => {
+      obj[classData.ruby[k].label] = k;
+      return obj;
+    }, {}),
+    lut: Object.keys(classData.ruby).reduce((obj, k) => {
+      obj[classData.ruby[k].label] = {
+        level: classData.ruby[k].level,
+        classId: classData.ruby[k].id,
+      };
+      return obj;
+    }, {}),
+  },
 };
 
 const aigisSpirit = {
@@ -88,4 +115,6 @@ export default deepFreeze({
     }
     return aigisRarity.data[rarity].orb !== null;
   },
+
+  hasItem: hasItem,
 });
