@@ -2,30 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 
-import ClassIcon from './class_icon.jsx';
 import RarityCell from './cell/rarity_cell.jsx';
 import UnitLabelCell from './cell/unit_label_cell.jsx';
 import SpiritLabelCell from './cell/spirit_label_cell.jsx';
 import OrbLabelCell from './cell/orb_label_cell.jsx';
 
-import rarityData from '../data/rarity.json';
-import {
-  spirit as spiritText,
-  table as tableText,
-} from '../data/text_ja.json';
+import common from './aigis_common.js';
 
 
 const iconSize = 25;
-
-const spiritRarity = Object.keys(spiritText).reduce((obj, key) => {
-  if (rarityData[key] === undefined) {
-    obj[key] = 'black';
-  } else {
-    obj[key] = key;
-  }
-  return obj;
-}, {});
-
 
 class AigisItemTable extends React.Component {
 
@@ -54,13 +39,13 @@ class AigisItemTable extends React.Component {
         <thead>
           <tr>
             <th>
-              {tableText.rarity}
+              {common.text.table.rarity}
             </th>
             <th>
-              {tableText.class}
+              {common.text.table.class}
             </th>
             <th>
-              {tableText.amount}
+              {common.text.table.amount}
             </th>
           </tr>
         </thead>
@@ -89,7 +74,7 @@ class AigisItemTable extends React.Component {
               <tr key={`row-spirit-${i}`}>
                 <RarityCell
                   key={`rarity-spirit-${i}`}
-                  rarity={spiritRarity[this.state.spirit[i].label]}
+                  rarity={common.spirit.rarity[this.state.spirit[i].label]}
                 />
                 <SpiritLabelCell
                   key={`label-spirit-${i}`}
@@ -129,16 +114,16 @@ class AigisItemTable extends React.Component {
 AigisItemTable.propTypes = {
   orb: PropTypes.arrayOf(PropTypes.shape({
     amount: PropTypes.number.isRequired,
-    classId: PropTypes.oneOf(Object.keys(ClassIcon)).isRequired,
+    classId: PropTypes.oneOf(common.unitClass.icon).isRequired,
   })),
   spirit: PropTypes.arrayOf(PropTypes.shape({
     amount: PropTypes.number.isRequired,
-    label: PropTypes.oneOf(Object.keys(spiritText)).isRequired,
+    label: PropTypes.oneOf(common.spirit.keys).isRequired,
   })),
   unit: PropTypes.arrayOf(PropTypes.shape({
     amount: PropTypes.number.isRequired,
-    classId: PropTypes.oneOf(Object.keys(ClassIcon)).isRequired,
-    rarity: PropTypes.oneOf(Object.keys(rarityData)).isRequired,
+    classId: PropTypes.oneOf(common.unitClass.icon).isRequired,
+    rarity: PropTypes.oneOf(common.rarity.keys).isRequired,
   })),
 };
 

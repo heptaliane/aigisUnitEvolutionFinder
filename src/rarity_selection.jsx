@@ -2,21 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 
-import rarityData from '../data/rarity.json';
+import common from './aigis_common.js';
 
-
-const rarity = Object.keys(rarityData);
-const ccLevel = 0;
 
 const containerStyle = {
   margin: '10px',
-};
-
-const isAvailableLabel = function(lbl, level) {
-  if (level === ccLevel) {
-    return rarityData[lbl].cc !== null;
-  }
-  return rarityData[lbl].orb !== null;
 };
 
 class RaritySelection extends React.Component {
@@ -47,16 +37,16 @@ class RaritySelection extends React.Component {
       <div style={containerStyle}>
         <Form.Control
           as="select"
-          style={rarityData[this.state.active].style}
+          style={common.rarity.data[this.state.active].style}
           value={this.state.active.toUpperCase()}
           onChange={this.handleChange}
         >
-          {rarity.map((lbl) => {
-            if (isAvailableLabel(lbl, this.state.level)) {
+          {common.rarity.keys.map((lbl) => {
+            if (common.checkValidRarity(this.state.level, lbl)) {
               return (
                 <option
                   key={lbl}
-                  style={rarityData[lbl].style}
+                  style={common.rarity.data[lbl].style}
                 >
                   {lbl.toUpperCase()}
                 </option>
@@ -71,17 +61,15 @@ class RaritySelection extends React.Component {
 }
 
 RaritySelection.propTypes = {
-  active: PropTypes.oneOf(rarity),
-  level: PropTypes.number,
+  active: PropTypes.oneOf(common.rarity.keys),
+  level: PropTypes.oneOf(common.level.keys),
   onChange: PropTypes.func,
 };
 
 RaritySelection.defaultProps = {
-  active: rarity[rarity.length - 1],
-  level: ccLevel,
-  onChange: (args) => {
-    console.log(args);
-  },
+  active: common.rarity.keys[common.rarity.keys.length - 1],
+  level: common.constant.ccLevel,
+  onChange: common.default.handler,
 };
 
 export default RaritySelection;
