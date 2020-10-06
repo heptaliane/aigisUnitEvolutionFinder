@@ -2,7 +2,7 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const src = path.resolve(__dirname, 'src');
-const dst = path.resolve(__dirname, 'dst');
+const dst = path.resolve(__dirname, 'docs');
 
 export default {
   mode: 'none',
