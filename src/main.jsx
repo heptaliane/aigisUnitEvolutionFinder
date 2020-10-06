@@ -63,7 +63,6 @@ class App extends React.Component {
     if (!common.checkValidRarity(newState.level, newState.rarity)) {
       newState.rarity = common.default.rarity;
     }
-    console.log(newState);
     this.setState(newState);
   }
 
