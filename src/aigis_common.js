@@ -39,6 +39,12 @@ const getIndexArray = function(arr) {
   });
 };
 
+const loadTextData = function(url) {
+  return fetch(url).then((res) => {
+    return res.text();
+  });
+}
+
 const hasItem = function(arr, item) {
   return arr.indexOf(item) !== aigisConstant.notFound;
 };
@@ -176,6 +182,8 @@ export default deepFreeze({
   unitClass: aigisClass,
 
   hasItem: hasItem,
+
+  loadTextData: loadTextData,
 
   checkValidRarity: function(level, rarity) {
     if (aigisRarity.data[rarity] === undefined) {

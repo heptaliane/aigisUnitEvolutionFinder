@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import ContentHeader from './content_header.jsx';
 import UnitView from './unit_view.jsx';
+import HomeView from './home_view.jsx';
 
 import common from './aigis_common.js';
 
@@ -75,6 +76,10 @@ class App extends React.Component {
           rarity={this.state.rarity}
           onChange={this.handleChange}
         />
+        {
+          this.state.classId === null &&
+          <HomeView />
+        }
         {
           this.state.classId !== null &&
           <div style={{textAlign: 'center'}}>
